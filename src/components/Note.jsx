@@ -18,6 +18,7 @@ const DateTime = styled.span`
 function Note(props) {
     const [dragging, setDragging] = useState(false);
     const [isClicked, setClicked] = useState(false);
+    const [edit, setEdit] = useState(false);
 
     function handleClick() {
         props.onDelete(props.id);
@@ -53,7 +54,9 @@ function Note(props) {
             }}
             tabIndex="1"
         >
-            <h1>{props.title}</h1>
+            <h1 onBlur={() => setEdit(false)} onDoubleClick={() => setEdit(true)}>{edit ?
+                <input value={props.title}
+                       onChange={e => props.editNoteTitle(props.id, e.target.value)}/> : props.title}</h1>
             <p>{props.content}</p>
             <DateTime>Created on {props.dateTime}</DateTime>
             <button onClick={handleClick}>

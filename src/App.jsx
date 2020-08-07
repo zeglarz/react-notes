@@ -36,6 +36,12 @@ const App = () => {
         });
     };
 
+    const editNoteTitle = (id, newText) => {
+        let copy = JSON.parse(JSON.stringify(notes));
+        copy[id].title = newText;
+        setNotes(copy);
+    };
+
     return (
         <ThemeProvider theme={theme === 'light' ? light : dark}>
             <GlobalStyle/>
@@ -54,6 +60,7 @@ const App = () => {
                             idxLastClicked={idxLastClicked}
                             setTdxLastClicked={setTdxLastClicked}
                             constraintsRef={constraintsRef}
+                            editNoteTitle={editNoteTitle}
                         />
                     );
                 })}
