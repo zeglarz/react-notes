@@ -13,7 +13,7 @@ export const useTheme = () => {
   }, [storage, theme]);
 
   const toggleTheme = () =>
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    setTheme(theme === "light" ? "dark" : "light");
 
   return [theme, toggleTheme];
 };

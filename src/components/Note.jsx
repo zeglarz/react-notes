@@ -31,8 +31,16 @@ function Note(props) {
             dragMomentum={false}
             className="note"
             onDragStart={() => setDragging(true)}
-            onDragEnd={() => setDragging(false)}
+            onDrag={(event, info) => {
+                props.updateCoords(props.id, { x: info.point.x, y: info.point.y });
+                console.log({ x: info.point.x, y: info.point.y });
+            }}
+            onDragEnd={() => {
+                setDragging(false);
+            }}
             style={{
+                originX: 0,
+                originY: 0,
                 zIndex: dragging
                     ? 99999
                     : isClicked
@@ -40,7 +48,9 @@ function Note(props) {
                         : props.idxLastClicked === props.id
                             ? 99
                             : 0,
-                cursor: dragging ? `url(${DraggingCursor}), grab` : `url(${DragCursor}), grabbing`
+                cursor: dragging ? `url(${DraggingCursor}), grab` : `url(${DragCursor}), grabbing`,
+                x: props.coords.x,
+                y: props.coords.y
             }}
             onClick={() => {
                 setClicked(true);
@@ -54,8 +64,8 @@ function Note(props) {
             }}
             tabIndex="1"
         >
-            <h1 onBlur={() => setEdit(false)} onDoubleClick={() => setEdit(true)}>{edit ?
-                <input value={props.title}
+            <h1 onDoubleClick={() => setEdit(true)}>{edit ?
+                <input autoFocus onBlur={() => setEdit(false)} value={props.title}
                        onChange={e => props.editNoteTitle(props.id, e.target.value)}/> : props.title}</h1>
             <p>{props.content}</p>
             <DateTime>Created on {props.dateTime}</DateTime>

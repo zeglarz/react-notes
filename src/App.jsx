@@ -42,6 +42,12 @@ const App = () => {
         setNotes(copy);
     };
 
+    const updateCoords = (id, coords) => {
+        let copy = JSON.parse(JSON.stringify(notes));
+        copy[id].coords = coords;
+        setNotes(copy);
+    };
+
     return (
         <ThemeProvider theme={theme === 'light' ? light : dark}>
             <GlobalStyle/>
@@ -53,6 +59,7 @@ const App = () => {
                         <Note
                             key={index}
                             id={index}
+                            coords={noteItem.coords}
                             title={noteItem.title}
                             content={noteItem.content}
                             onDelete={deleteNote}
@@ -61,6 +68,7 @@ const App = () => {
                             setTdxLastClicked={setTdxLastClicked}
                             constraintsRef={constraintsRef}
                             editNoteTitle={editNoteTitle}
+                            updateCoords={updateCoords}
                         />
                     );
                 })}

@@ -9,7 +9,11 @@ function CreateNote(props) {
     const [note, setNote] = useState({
         title: '',
         content: '',
-        createdAt: ''
+        createdAt: '',
+        coords: {
+            x: 0,
+            y: 0
+        }
     });
 
     const [isExpanded, SetExpanded] = useState(false);
