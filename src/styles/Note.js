@@ -32,5 +32,6 @@ export const StyledNote = styled(motion.div)`
     cursor: pointer;
     border: none;
     outline: none;
+    background-color: transparent;
   }
 `;
