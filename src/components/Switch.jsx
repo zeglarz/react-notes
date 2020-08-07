@@ -16,7 +16,7 @@ const Switch = (props) => {
             <motion.div
                 layout
                 transition={spring}
-                whileTap={{ width: 33, textAlign: 'center' }}
+                whileTap={{ width: 33, textAlign: 'center', scale: 1.05 }}
             >
                 {!props.isOn ? <Sun/> : <Moon/>}
             </motion.div>

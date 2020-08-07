@@ -13,6 +13,7 @@ export const StyledNote = styled(motion.div)`
   z-index: 0;
   position: relative;
 
+
   & h1 {
     font-size: 1.1em;
     margin-bottom: 6px;
@@ -29,7 +30,6 @@ export const StyledNote = styled(motion.div)`
     color: #f5ba13;
     width: 36px;
     height: 36px;
-    cursor: pointer;
     border: none;
     outline: none;
     background-color: transparent;

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { DeleteOutlined } from "@material-ui/icons";
-import styled from "styled-components";
-import { StyledNote } from "../styles/Note";
+import React, { useState } from 'react';
+import { DeleteOutlined } from '@material-ui/icons';
+import styled from 'styled-components';
+import { StyledNote } from '../styles/Note';
+import DragCursor from '../assets/cursor-drag.png';
+import DraggingCursor from '../assets/cursor-drag-clicked.png';
 
 const DateTime = styled.span`
   position: relative;
@@ -36,17 +38,18 @@ function Note(props) {
                         ? 999999
                         : props.idxLastClicked === props.id
                             ? 99
-                            : 0
+                            : 0,
+                cursor: dragging ? `url(${DraggingCursor}), grab` : `url(${DragCursor}), grabbing`
             }}
             onClick={() => {
                 setClicked(true);
-                console.log("clicked");
+                console.log('clicked');
                 props.setTdxLastClicked(props.id);
                 console.log(props.idxLastClicked);
             }}
             onBlur={() => {
                 setClicked(false);
-                console.log("blurred");
+                console.log('blurred');
             }}
             tabIndex="1"
         >
@@ -54,7 +57,7 @@ function Note(props) {
             <p>{props.content}</p>
             <DateTime>Created on {props.dateTime}</DateTime>
             <button onClick={handleClick}>
-                <DeleteOutlined />
+                <DeleteOutlined/>
             </button>
         </StyledNote>
     );

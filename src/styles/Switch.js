@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Pointer from '../assets/cursor-pointer.png';
 
 export const StyledSwitch = styled(motion.div)`
   width: 55px;
@@ -14,8 +15,9 @@ export const StyledSwitch = styled(motion.div)`
   justify-content: flex-start;
   border-radius: 50px;
   padding: 3.2px;
-  cursor: pointer;
   margin: 0 20px;
+  cursor: url(${Pointer}), pointer;
+
 
   &[data-isOn="true"] {
     justify-content: flex-end;
