@@ -32,7 +32,7 @@ function Note(props) {
             className="note"
             onDragStart={() => setDragging(true)}
             onDrag={(event, info) => {
-                props.updateCoords(props.id, { x: info.point.x, y: info.point.y });
+                props.updateCoords(props.id, { x: Math.floor(info.point.x), y: Math.floor(info.point.y) });
                 console.log({ x: info.point.x, y: info.point.y });
             }}
             onDragEnd={() => {
