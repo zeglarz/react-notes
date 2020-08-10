@@ -40,7 +40,8 @@ function Note(props) {
                         : props.idxLastClicked === props.id
                             ? 99
                             : 0,
-                cursor: dragging ? `url(${DraggingCursor}), grab` : `url(${DragCursor}), grabbing`
+                cursor: dragging ? `url(${DraggingCursor}), grab` : `url(${DragCursor}), grabbing`,
+                transformOrigin: '0 0 0 !important'
             }}
             onClick={() => {
                 setClicked(true);
@@ -55,7 +56,7 @@ function Note(props) {
             tabIndex="1"
         >
             <h1 onBlur={() => setEdit(false)} onDoubleClick={() => setEdit(true)}>{edit ?
-                <input value={props.title}
+                <input autoFocus value={props.title}
                        onChange={e => props.editNoteTitle(props.id, e.target.value)}/> : props.title}</h1>
             <p>{props.content}</p>
             <DateTime>Created on {props.dateTime}</DateTime>
